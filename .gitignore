@@ -1,0 +1,22 @@
+# Dependencies (NOT ignored before; the ~2,339 tracked node_modules files stay
+# tracked until you explicitly run `git rm -r --cached node_modules`).
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

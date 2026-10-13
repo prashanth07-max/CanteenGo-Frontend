@@ -1,9 +1,13 @@
+// Production API base URL, set at build time via VITE_API_URL (e.g.
+// https://canteengo-api.example.com). Empty => same origin (uses the Vite proxy in dev).
+const API_BASE = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')
+
 export async function api(path, { method = 'GET', body } = {}) {
   const headers = { 'Content-Type': 'application/json' }
   const user = JSON.parse(localStorage.getItem('canteengo_user') || 'null')
   if (user?.token) headers.Authorization = `Bearer ${user.token}`
 
-  const res = await fetch(`/api${path}`, {
+  const res = await fetch(`${API_BASE}/api${path}`, {
     method,
     headers,
     body: body ? JSON.stringify(body) : undefined,
